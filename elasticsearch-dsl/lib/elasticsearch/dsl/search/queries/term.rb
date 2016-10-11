@@ -19,6 +19,9 @@ module Elasticsearch
         #
         class Term
           include BaseComponent
+
+          option_method :value
+          option_method :boost
         end
 
       end
