@@ -3,7 +3,7 @@ require 'test_helper'
 module Elasticsearch
   module Test
     module Queries
-      class MatchPhrasePrefixTest < ::Elasticsearch::Test::UnitTestCase
+      class MatchPhrasePrefixTest < ::Test::Unit::TestCase
         include Elasticsearch::DSL::Search::Queries
 
         context "Match Phrase Prefix Query" do

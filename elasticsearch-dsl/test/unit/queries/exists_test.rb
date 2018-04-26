@@ -3,7 +3,7 @@ require 'test_helper'
 module Elasticsearch
   module Test
     module Queries
-      class ExistsTest < ::Elasticsearch::Test::UnitTestCase
+      class ExistsTest < ::Test::Unit::TestCase
         include Elasticsearch::DSL::Search::Queries
 
         context "Exists query" do

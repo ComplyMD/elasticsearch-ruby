@@ -37,13 +37,13 @@ module Elasticsearch
             end
 
             assert_equal( { bool:
-                            {
+                            { 
                               minimum_should_match: 1,
                               boost: 1.0,
                               should:     [ {term: { tag: 'wow' }}, {term: { tag: 'elasticsearch' }} ]
                             }
                           },
-                          subject.to_hash )
+                          subject.to_hash )            
           end
 
           should "take a block with multiple methods" do

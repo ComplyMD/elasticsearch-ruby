@@ -3,7 +3,7 @@ require 'test_helper'
 module Elasticsearch
   module Test
     module Queries
-      class MatchPhraseTest < ::Elasticsearch::Test::UnitTestCase
+      class MatchPhraseTest < ::Test::Unit::TestCase
         include Elasticsearch::DSL::Search::Queries
 
         context "Match Phrase Query" do
