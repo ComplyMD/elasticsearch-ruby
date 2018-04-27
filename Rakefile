@@ -172,6 +172,7 @@ namespace :test do
 
   desc "Run unit tests in all subprojects"
   task :unit do
+    Rake::Task['test:ci_reporter'].invoke if ENV['CI']
     puts "Ruby [#{RUBY_VERSION}]" if defined? RUBY_VERSION
     subprojects.each do |project|
       puts '-'*80

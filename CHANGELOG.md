@@ -1,22 +1,52 @@
-## DSL:0.1.5
+## 5.0.4
 
-* Added support for the ["Exists" Query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-exists-query.html)
-* Added missing `like` and `unlike` options to the ["More Like This" Query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html)
-* Added missing `time_zone` option to the ["Query String" Query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html)
-* Added missing `inner_hits` option to the [Nested Query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-nested-query.html)
-* Allow calling the `filter` method for the [Bool Query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html) multiple times
-* Added missing `minimum_should_match`, `prefix_length`, `max_expansions`, `fuzzy_rewrite`, `analyzer`, `lenient`, `zero_terms_query` and `cutoff_frequency` options to the [Match Query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html)
-* Added missing `minimum_should_match` and `boost` options to the [Bool Query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html)
-* Refactored the [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html) collection into its own `AggregationsCollection` class
+### Client
 
-## EXT:0.0.23
+* Fixed incorrect test behaviour when the `QUIET` environment variable is set
+* Fixed double logging of failed responses
+* Swallow logging of exceptions when the `ignore` is specified
+* Fixed the bug with `nil` value of `retry_on_status`
 
-* Fixed removing the data directory for Elasticsearch 5 and 6 in the test cluster
-* Added, that Elasticsearch process is properly killed when determining version
-* Updated the test cluster class to be compatible Elasticsearch 6.x
-* Added `the max_local_storage_nodes` setting to the start command arguments for Elasticsearch 5.x
-* Improved the documentation and error messsages for the test cluster
-* Updated the "Reindex" extension for Elasticsearch 5.x
+### API
+
+* Added the "Field Capabilities" API
+* Changed, that the YAML test content is not printed unless `DEBUG` is set
+* Fixed the failing unit tests for "Scroll" APIs
+* Added missing parameters to the "Search" API
+* Added missing parameters to the "Multi Search" API
+* Added missing parameters to the "Indices Clear Cache" API
+* Added missing arguments to the "Exists" API
+* Fixes for the "Scroll" API
+* Improved the YAML test runner
+
+## 5.0.3
+
+### Client
+
+* Added proper handling of headers in client options to the Manticore adapter
+
+## 5.0.2
+
+### Client
+
+* Added default value 'application/json' for the 'Content-Type' header
+
+## 5.0.0
+
+### API
+
+* Updated the parameters for Elasticsearch 5.x APIs
+* Added Elasticsearch 5.x APIs
+
+## 2.0.0
+
+* Added deprecation notices to API methods and parameters not supported on Elasticsearch 2.x
+
+## 1.1.0
+
+### API
+
+* Added deprecation notices to API methods and arguments not supported on Elasticsearch 1.x
 
 ## DSL:0.1.4
 

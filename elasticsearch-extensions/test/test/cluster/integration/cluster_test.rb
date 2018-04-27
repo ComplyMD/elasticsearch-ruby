@@ -22,26 +22,19 @@ class Elasticsearch::Extensions::TestClusterIntegrationTest < Elasticsearch::Tes
       []
     end
 
-    STDOUT.puts %Q|Builds: \n#{@builds.map { |b| "  * #{b}"}.join("\n")}| unless ENV['QUIET']
+    STDOUT.puts %Q|Builds: \n#{@builds.map { |b| "  * #{b}"}.join("\n")}|
 
     @builds.each do |build|
       should "start and stop #{build.to_s}" do
         puts ("----- #{build.to_s} " + "-"*(80-7-build.to_s.size)).to_s.ansi(:bold)
         begin
-          Elasticsearch::Extensions::Test::Cluster.start \
-            command: PATH_TO_BUILDS.join(build.join('bin/elasticsearch')).to_s,
-            port: 9260,
-            cluster_name: 'elasticsearch-ext-integration-test',
-            path_data: '/tmp/elasticsearch-ext-integration-test'
+          Elasticsearch::Extensions::Test::Cluster.start command: PATH_TO_BUILDS.join(build.join('bin/elasticsearch')).to_s
 
           # Index some data to create the data directory
-          client = Elasticsearch::Client.new host: "localhost:9260"
+          client = Elasticsearch::Client.new host: "localhost:9250"
           client.index index: 'test1', type: 'd', id: 1, body: { title: 'TEST' }
         ensure
-          Elasticsearch::Extensions::Test::Cluster.stop \
-            command: PATH_TO_BUILDS.join(build.join('bin/elasticsearch')).to_s,
-            port: 9260,
-            cluster_name: 'elasticsearch-ext-integration-test'
+          Elasticsearch::Extensions::Test::Cluster.stop command: PATH_TO_BUILDS.join(build.join('bin/elasticsearch')).to_s
         end
       end
     end

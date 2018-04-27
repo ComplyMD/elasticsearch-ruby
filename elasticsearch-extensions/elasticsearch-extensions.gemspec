@@ -19,9 +19,10 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency "ansi"
-  s.add_dependency "elasticsearch"
-  s.add_dependency "oj"
-  s.add_dependency "patron"
+
+  unless File.exist? File.expand_path("../../elasticsearch/elasticsearch.gemspec", __FILE__)
+    s.add_dependency "elasticsearch"
+  end
 
   if defined?(RUBY_VERSION) && RUBY_VERSION > '1.9'
     s.add_dependency "ruby-prof" unless defined?(JRUBY_VERSION) || defined?(Rubinius)

@@ -37,14 +37,14 @@ module Elasticsearch
         # Defines an aggregation nested in another one
         #
         def aggregation(*args, &block)
-          # call
+          #call
           @value.__send__ :aggregation, *args, &block
         end
 
         # Returns the aggregations
         #
         def aggregations
-          # call
+          #call
           @value.__send__ :aggregations
         end
 

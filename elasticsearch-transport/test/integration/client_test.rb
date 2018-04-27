@@ -54,11 +54,11 @@ class Elasticsearch::Transport::ClientIntegrationTest < Elasticsearch::Test::Int
     end
 
     should "ignore specified response codes" do
-      response = @client.perform_request 'PUT', '_foobar', ignore: 400
+      response = @client.perform_request 'GET', '/_foobar', ignore: 400
       assert_equal 400, response.status
 
       assert_instance_of Hash, response.body
-      assert_match /invalid_index_name_exception/, response.body.inspect
+      assert_match /illegal_argument_exception/, response.body.inspect
     end
 
     should "pass options to the transport" do
