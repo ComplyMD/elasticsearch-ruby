@@ -7,35 +7,18 @@ module Elasticsearch
     module Search
       module Queries
 
-        # Returns documents that have at least one non-null value in the field.
+        # A filter which returns documents which have at least one non-`null` value in the specified field
+        # (ie. the reverse of the `missing` filter)
         #
-        # @example Find documents with non-empty "name" property
-        #
-        #     search do
-        #       query do
-        #         exists do
-        #           field 'name'
-        #         end
-        #       end
-        #     end
-        #
-        # @note The "Exists" query can be used as a "Missing" query in a "Bool" query "Must Not" context.
-        #
-        # @example Find documents with an empty "name" property
+        # @example
         #
         #     search do
         #       query do
-        #         bool do
-        #           must_not do
-        #             exists do
-        #               field 'name'
-        #             end
-        #           end
-        #         end
+        #         exists field: 'occupation'
         #       end
         #     end
         #
-        # @see https://www.elastic.co/guide/en/elasticsearch/reference/5.1/query-dsl-exists-query.html
+        # @see https://www.elastic.co/guide/en/elasticsearch/reference/5.0/query-dsl-exists-query.html
         #
         class Exists
           include BaseComponent
